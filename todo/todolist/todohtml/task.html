@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>task</title>
+<style>
+form {
+	font-size : 15px;
+	color:blue;
+	
+	}
+table,th,th {
+	border : 1px solid black;
+	color : blue;
+}
+
+</style>
+ </head>
+<body>
+<br><br><br><br><br>
+<form method="POST" role="form">
+{% csrf_token %}
+
+<b>Selected Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			<input type="text" 
+name="selected_date" value="{{selected_date}}" readonly>
+<br><br><br>
+<b>Task Name:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			<input type="text" 
+name="task_name">
+<br><br><br>
+<b>Task Discription:</b>&nbsp;&nbsp;			<input type="text"
+name="task_discription">
+<br><br><br>
+<b>Complete Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="date" name="complete_date">
+<br><br><br>
+<input type ="submit">
+<br><br><br><br><br><br><br>
+
+
+	<table style="width:100%" border="1|1">
+	<tr>
+		<th>Id</th>
+		<th>Task Name</th>
+		<th>Task discription</th>
+		<th>Create date</th>
+		<th>Complete date</th>
+	</tr>
+	{% if list_task_list %}
+		{% for task in list_task_list %}
+			<tr>
+				<td>{{ task.id }}</td>
+				<td>{{ task.task_name }}</td>
+				<td>{{ task.task_description }}</td>
+				<td>{{ task.start_date }}</td>
+				<td>{{ task.finish_date }}</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td colspan="2">No Task Available</td>
+		</tr>
+	{% endif %}
+</table>
+</body>
+</html>

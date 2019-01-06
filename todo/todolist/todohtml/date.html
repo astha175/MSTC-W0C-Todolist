@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<title>date</title>
+<style>
+body {
+		background-color: white;
+
+	}
+h1 {
+	color: blue;
+	text-align:center;
+}
+p {
+	text-align : center;
+	color: slateblue;x
+	font-size : 25px
+}
+form {
+	text-align : center;
+	color:gray;
+	font-size : 25px;
+}
+h2 {
+	text-align : center;
+	}
+h3	 {
+	text-align : center;
+	color : blue;
+	}
+</style>
+ </head>
+<body>
+<h1> TO DO LIST </h1>
+<br><br>
+<h2><img src="{% static "photo.jpg" %}" style="width:200px;height:200px;" class="center">
+<br>
+<h3> Get  a clear view of the day ahaed </h3>
+<br><br><br>
+<p>
+Select a date that you want to search:
+</p>
+<form action="../task/" role="form" method="post">
+{% csrf_token %}
+Date:
+<input type="date" name="task_date">
+<input type="Submit">
+</form>
+</body>
+</html>
